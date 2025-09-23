@@ -3,7 +3,7 @@ from fastf1 import plotting
 import pandas as pd
 
 # Enable caching
-fastf1.Cache.enable_cache('data/fastf1_cache')  # adjust path as needed
+fastf1.Cache.enable_cache('C:/Users/aktkr/F1_Race_Winner_Predictions/.cache/fastf1_cache')  # adjust path as needed
 
 class DataFetcher:
     def __init__(self, year: int, gp_name: str):
@@ -31,8 +31,22 @@ class DataFetcher:
         return self.session.results
 
 
+class Preprocessor:
+    @staticmethod
+    def preprocess_classification(df: pd.DataFrame) -> pd.DataFrame:
+        """
+        Preprocess the classification DataFrame.
+        """
+        # Example preprocessing: select relevant columns and handle missing values
+        relevant_columns = ['Position', 'Driver', 'Team', 'Time', 'Points']
+        df = df[relevant_columns]
+        df = df.dropna()  # Drop rows with missing values
+        return df
+
+
+
 if __name__ == "__main__":
     fetcher = DataFetcher(2025, "Azerbaijan Grand Prix")
     fetcher.load_session("Qualifying")
     quali_results = fetcher.get_classification()
-    print(quali_results)
+    print(quali_results.columns)
