@@ -4,6 +4,7 @@ __pycache__/
 *$py.class
 
 bias_detector/.data/
+.healthcare/
 
 # C extensions
 *.so
