@@ -3,6 +3,8 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+bias_detector/.data/
+
 # C extensions
 *.so
 
